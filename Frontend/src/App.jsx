@@ -9,7 +9,7 @@ import MessageInput from "./Components/MessageInput";
 enableMapSet();
 
 const socketURL =
-  process.env.REACT_APP_SOCKET_URL || "https://chat-apps-2-3juo.onrender.com";
+  process.env.REACT_APP_SOCKET_URL || "https://chat-app-6-ams3.onrender.com";
 
 export default function App() {
   const [mySocket, setMySocket] = useState(null);
@@ -17,7 +17,6 @@ export default function App() {
   const [activeRoomId, setActiveRoomId] = useState(null);
   const [message, setMessage] = useState("");
   const [userName, setUserName] = useState("");
-  const [rooms, setRooms] = useState([]); // Dynamic rooms state
   const isPromptAlert = useRef(false);
   const [userTypingMapping, setUserTypingMapping] = useState({});
   const [userTypingTimeOutMapping, setUserTypingTimeOutMapping] = useState({});
@@ -36,11 +35,6 @@ export default function App() {
 
     const socket = io(socketURL, { transports: ["websocket"] });
     setMySocket(socket);
-
-    // Fetch rooms dynamically from server or WebSocket
-    socket.on("rooms", (fetchedRooms) => {
-      setRooms(fetchedRooms); // Store fetched rooms in state
-    });
 
     socket.on("roomMessage", (data) => {
       setRoomIdToMapping(
@@ -122,7 +116,6 @@ export default function App() {
       <Sidebar
         activeRoomId={activeRoomId}
         joinRoomExclusively={joinRoomExclusively}
-        rooms={rooms} // Pass dynamically fetched rooms here
       />
       <main className="col-span-8 px-8 h-screen overflow-y-auto flex flex-col">
         <p>Your username: {userName}</p>
