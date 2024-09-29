@@ -17,24 +17,16 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // HTTP server
+
 const httpServer = createServer(app);
-httpServer.listen(3000, () => {
-  console.log("HTTP server listening on port 3000");
-});
-
-// WebSocket server
-const wsApp = express();
-const wsServer = createServer(wsApp);
-wsServer.listen(3001, () => {
-  console.log("WebSocket server running on port 3001");
-});
-
-const io = new Server(wsServer, {
+const io = new Server(httpServer, {
   transports: ["websocket"],
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-  },
+  cors: corsOptions,
+});
+
+const PORT = process.env.PORT || 3000;
+httpServer.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 const messageMapping = {};
