@@ -5,23 +5,25 @@ const ChatWindow = ({ messages }) => {
     <div
       className="relative w-full h-full p-4 overflow-y-auto"
       style={{
-        backgroundImage: "url('/bgImg.png')", 
+        backgroundImage: "url('/bgImg.png')", // Correct path for image from public folder
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundColor: 'rgba(0, 0, 0, 0.05)', 
+        backgroundColor: 'rgba(0, 0, 0, 0.05)', // Optional overlay for better readability
         backgroundBlendMode: 'overlay',
       }}
     >
       {messages.map(({ message, userName }, index) => (
         <div
-          className={`w-full px-4 py-2 mb-2 ${
-            userName === "You" ? "text-right" : "text-left"
-          }`}
           key={index}
+          className={`flex mb-2 ${
+            userName === "You" ? "justify-end" : "justify-start"
+          }`}
         >
           <div
-            className={`inline-block rounded-lg px-4 py-2 shadow-md ${
-              userName === "You" ? "bg-green-200 text-gray-800" : "bg-white border"
+            className={`inline-block max-w-xs rounded-lg px-4 py-2 shadow-md ${
+              userName === "You"
+                ? "bg-green-200 text-gray-800"
+                : "bg-white border"
             }`}
           >
             <p className="font-bold text-sm">{userName}</p>
