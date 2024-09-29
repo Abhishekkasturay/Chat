@@ -1,21 +1,26 @@
-import React, { useState } from "react";
-import Sidebar from "./Sidebar"; // Make sure the path is correct for your project
+import React from "react";
 
-export default function App() {
-  const [activeRoomId, setActiveRoomId] = useState(null);
-
-  function joinRoomExclusively(roomId) {
-    setActiveRoomId(roomId); // Set the active room when a user clicks on it
-  }
-
+const Sidebar = ({ activeRoomId, joinRoomExclusively }) => {
   return (
-    <div className="grid grid-cols-12 h-screen">
-      <Sidebar activeRoomId={activeRoomId} joinRoomExclusively={joinRoomExclusively} />
-      {/* Add your ChatWindow and other components for the main area */}
-      <main className="col-span-8 p-4">
-        <h1 className="text-3xl font-bold">Chat Room #{activeRoomId}</h1>
-        {/* Chat window and other components */}
-      </main>
-    </div>
+    <aside className="col-span-4 px-8 h-screen overflow-y-auto">
+      <h1>Sidebar</h1>
+      {Array(10)
+        .fill(0)
+        .map((_, i) => (
+          <div
+            className={`p-2 cursor-pointer ${
+              activeRoomId === i + 1
+                ? "bg-black text-white"
+                : "hover:bg-gray-100"
+            }`}
+            key={i}
+            onClick={() => joinRoomExclusively(i + 1)}
+          >
+            Room #{i + 1}
+          </div>
+        ))}
+    </aside>
   );
-}
+};
+
+export default Sidebar;
