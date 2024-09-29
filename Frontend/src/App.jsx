@@ -9,7 +9,7 @@ import MessageInput from "./Components/MessageInput";
 enableMapSet();
 
 const socketURL =
-  process.env.REACT_APP_SOCKET_URL || "https://chat-app-6-ams3.onrender.com";
+  process.env.REACT_APP_SOCKET_URL || "https://chat-apps-1-3a7i.onrender.com";
 
 export default function App() {
   const [mySocket, setMySocket] = useState(null);
