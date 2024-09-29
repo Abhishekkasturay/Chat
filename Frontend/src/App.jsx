@@ -21,6 +21,12 @@ export default function App() {
   const [userTypingMapping, setUserTypingMapping] = useState({});
   const [userTypingTimeOutMapping, setUserTypingTimeOutMapping] = useState({});
 
+  const rooms = [
+    { id: 1, name: "Room 1", lastMessage: "Hello!", timestamp: "10:00", unread: 2 },
+    { id: 2, name: "Room 2", lastMessage: "How are you?", timestamp: "10:05", unread: 1 },
+    // Add more dynamic rooms here
+  ];
+
   useEffect(() => {
     if (!isPromptAlert.current) {
       isPromptAlert.current = true;
@@ -116,6 +122,7 @@ export default function App() {
       <Sidebar
         activeRoomId={activeRoomId}
         joinRoomExclusively={joinRoomExclusively}
+        rooms={rooms} // Dynamically pass rooms here
       />
       <main className="col-span-8 px-8 h-screen overflow-y-auto flex flex-col">
         <p>Your username: {userName}</p>
