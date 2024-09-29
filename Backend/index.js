@@ -2,9 +2,19 @@ import express from "express";
 import { Server } from "socket.io";
 import { createServer } from "http";
 import { nanoid } from "nanoid";
+import cors from "cors";
 
 const app = express();
 app.use(express.static("./public"));
+
+// Enable CORS for your frontend URL
+const corsOptions = {
+  origin: "https://orderandgo-3.onrender.com", 
+  methods: ["GET", "POST"],
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 // HTTP server
 const httpServer = createServer(app);
