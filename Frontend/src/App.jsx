@@ -118,7 +118,9 @@ export default function App() {
         joinRoomExclusively={joinRoomExclusively}
       />
       <main className="col-span-8 px-8 h-screen overflow-y-auto flex flex-col">
-        <p>Your username: {userName}</p>
+        <div className="bg-gray-800 p-4 text-white rounded-md">
+             <p className="text-lg font-semibold">{userName}</p>
+        </div>
         <TypingIndicator typingUsers={typingUserInRoom} />
         <ChatWindow messages={messageOfRoom} />
         <div className="flex-grow" />
