@@ -5,13 +5,14 @@ const ChatWindow = ({ messages }) => {
     <div
       className="relative w-full h-full p-4 overflow-y-auto"
       style={{
-        backgroundImage: "url('/bgImg.png')", // Ensure you reference the correct path to the image
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center", // Center the background image
-        backgroundColor: "rgba(0, 0, 0, 0.75)", // Apply a dark overlay for a muted effect
-        backgroundBlendMode: "darken", // Darken the background for a muted effect
-        filter: "brightness(0.4)", // Adjust brightness for a darker background
+         backgroundImage: "url('/bgImg.png')", // Correct path for the image
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundColor: "rgba(0, 0, 0, 0.75)", // Apply dark overlay for the background
+          backgroundBlendMode: "darken",
+          filter: "brightness(0.4)", // Darken only the background
+          zIndex: -1, // Ensures background stays behind the messages
       }}
     >
       {messages.map(({ message, userName }, index) => (
