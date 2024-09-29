@@ -9,7 +9,7 @@ import MessageInput from "./Components/MessageInput";
 enableMapSet();
 
 const socketURL =
-  process.env.REACT_APP_SOCKET_URL || "https://chat-apps-2-3juo.onrender.com";
+  process.env.REACT_APP_SOCKET_URL || "https://chat-app-6-ams3.onrender.com";
 
 export default function App() {
   const [mySocket, setMySocket] = useState(null);
@@ -118,9 +118,7 @@ export default function App() {
         joinRoomExclusively={joinRoomExclusively}
       />
       <main className="col-span-8 px-8 h-screen overflow-y-auto flex flex-col">
-        <div className="bg-gray-800 p-4 text-white rounded-md">
-          <p className="text-lg font-semibold">{userName}</p>
-        </div>
+        <p>Your username: {userName}</p>
         <TypingIndicator typingUsers={typingUserInRoom} />
         <ChatWindow messages={messageOfRoom} />
         <div className="flex-grow" />
